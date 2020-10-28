@@ -50,7 +50,7 @@ public class BestPath {
 
 	}
 
-	// method that sets the friends in a linkedArray
+	// method that sets the friends in the ArrayList
 	static void setFriends() {
 		friends.add(0, "Bob");
 		friends.add(1, "Alice");
@@ -82,10 +82,9 @@ public class BestPath {
 		System.out.println("Please enter the name of the friend you want Bob to visit.");
 		String temp = scan.nextLine(); // created a temp variable to store user answer
 		name = temp.substring(0, 1).toUpperCase() + temp.substring(1).toLowerCase(); // formatted user answer to fit
-																						// criteria
+		// criteria
 		if (friends.contains(name)) {
-			friendNum = friends.indexOf(name); // sets the index of the friend we need to find if it's on the
-												// linkedArray
+			friendNum = friends.indexOf(name); // sets the index of the friend we need to find if it's on the linkedArray
 			selectPath(name);
 			return name;
 		} else { // this immediately sends message that the friend isn't found
@@ -163,16 +162,16 @@ public class BestPath {
 
 	// this method is for letting the user decide whether or not to continue
 	static boolean contYN(Scanner scan) {
-		char cont = 'n';
+		String cont = "";
 		while (true) {
 			System.out.println("\n\nWould you like to find another friend? (y/n):");
-			cont = scan.nextLine().charAt(0);
-			if (cont == 'y')
+			cont = scan.nextLine().toLowerCase();
+			if (cont.equals("y") || cont.equals("yes"))
 				return true;
-			else if (cont == 'n')
+			else if (cont.equals("n") || cont.equals("no"))
 				return false;
 			else
-				System.out.println("Invalid input!");
+				System.out.println("Invalid input! Please type in yes or no (y/n):");
 		}
 
 	}
